@@ -1,0 +1,51 @@
+<!-- index.html / HYPS Home -->
+
+<html>
+  <head>
+    <title>SPring-8 HYPS Home</title>
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500|Roboto:300,400,500&display=swap">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <header>
+      SPring-8 HYPS Home
+    </header>
+
+    <main>
+      <h3>Experimental monitors</h3>
+      <ul class="example">
+        <li><a href="" target="_blank">Online Analyzer</a></li>
+        <li><a href="http://db-hyps.rcnp.osaka-u.ac.jp:3000/dashboards" target="_blank">Grafana Dashboards</a></li>
+      </ul>
+
+      <h3>Links</h3>
+      <ul class="example">
+        <!-- Uncomment and add links as needed -->
+        <li><a href="https://lambda.phys.tohoku.ac.jp/catch-wiki/" target="_blank">Catch Wiki</a></li>
+        <li><a href="https://github.com/hyps-exp/" target="_blank">GitHub HYPS Organization</a></li>
+        <li><a href="https://www-online.kek.jp/~sks/gitweb" target="_blank">K1.8 Git Repositories</a></li>
+        <li><a href="https://kds.kek.jp/indico/category/1750/" target="_blank">Indico [HYPS/E40]</a></li>
+      </ul>
+
+      <hr>
+      <footer>
+        <script type="text/javascript">
+          var day = new Date(document.lastModified);
+          var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          var y = day.getFullYear();
+          var m = day.getMonth() + 1;
+          var d = day.getDate();
+          var w = week[day.getDay()];
+          if (m < 10) m = "0" + m;
+          if (d < 10) d = "0" + d;
+          document.write("Last Update: " + y + "/" + m + "/" + d + " (" + w + ")");
+        </script>
+        <noscript>JavaScript is unavailable</noscript>
+      </footer>
+    </main>
+  </body>
+</html>
