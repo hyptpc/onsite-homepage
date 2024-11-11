@@ -1,0 +1,172 @@
+<!-- index.html / HYPS Home -->
+
+<html>
+  <head>
+    <title>How to control CAENHV</title>
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:wght@400;700|Quicksand:300,400,500|Roboto:300,400,500&display=swap">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <header>
+      How to control CAENHV
+    </header>
+    <main>
+      <p>使用する CAENHV は4系統。</p>
+      <table class="styled-table">
+	<thead>
+	  <tr><td>alias</td><td>module</td><td>asignment</td></tr>
+	</thead>
+	<tbody>
+	  <tr><td>caenhv0</td><td>SY527</td><td>Tagger</td></tr>
+	  <tr><td>caenhv1</td><td>SY403</td><td>TOF</td></tr>
+	  <tr><td>caenhv2</td><td>SY403</td><td>TOF</td></tr>
+	  <tr><td>caenhv3</td><td>N1470</td><td>T0, AC, VETO</td></tr>
+	</tbody>
+      </table>
+      <p>操作は全て <b>db-hyps</b> で行う。</p>
+      <pre>$ ssh sks@db-hyps</pre>
+
+      <h3>SY403/SY527</h3>
+     <!-- <h4>SY403</h4> -->
+      <b>db-hyps</b> で実行。接続すると下のように表示される。
+      <pre>$ caenhv1
+Trying 192.168.20.11...
+Connected to caenhv1.
+Escape character is '^]'.</pre>
+      <b>Enter</b> を入力。Main Menu が表示される。頭文字がコマンドに対応。
+      <pre>
+
+
+
+         C.A.E.N.       SY403        V1.45                   Crate 01
+
+
+
+
+      M A I N   M E N U
+
+      Display             Display/Modify channels
+      Protections         Set/Reset password
+      Crate               Connect a new crate
+      Map                 Crate map
+      Kill                Kill all channels
+      Alarms              Reset alarms
+      Status              Select type of alarm
+      Format              Reformat EEPROM
+      Quit                Abandon program
+
+
+
+      Select item
+
+</pre>
+      <b>d</b> 入力後 <b>Enter</b> でチャンネル表示に切り替わる。
+      <pre>
+                C.A.E.N.       SY403        V1.45
+ GROUP00      Hv_En is: On     V0-SEL     I0-SEL      Crate 01       Page 3
+
+ Channel       Vmon     Imon    HVmax   V0set     I0set     Hv   Status   Ch#
+ CHANNEL48    0000.00  0000.00  3202   2150.00   3000.00   Off             48
+ CHANNEL49    0000.00  0000.00  3202   1700.00   3000.00   Off             49
+ CHANNEL50    0000.00  0000.00  3202   1900.00   3000.00   Off             50
+ CHANNEL51    0000.00  0000.00  3202   2000.00   3000.00   Off             51
+ CHANNEL52    0000.00  0000.00  3202   1500.00   3000.00   Off             52
+ CHANNEL53    0000.00  0000.00  3202   2100.00   3000.00   Off             53
+ CHANNEL54    0000.00  0000.00  3202   1500.00   3000.00   Off             54
+ CHANNEL55    0000.00  0000.00  3202   2100.00   3000.00   Off             55
+ CHANNEL56    0000.00  0000.00  3202   1500.00   3000.00   Off             56
+ CHANNEL57    1943.80  0896.00  3202   1950.00   3000.00    On             57
+ CHANNEL58    0000.80  0000.00  3202   0000.00   3000.00   Off             58
+ CHANNEL59    1993.60  0919.00  3202   2000.00   3000.00    On             59
+ CHANNEL60    1846.40  0851.00  3202   1850.00   3000.00    On             60
+ CHANNEL61    2095.60  0966.00  3202   2100.00   3000.00    On             61
+ CHANNEL62    1846.60  0840.00  3202   1850.00   3000.00    On             62
+ CHANNEL63    1996.40  0921.00  3202   2000.00   3000.00    On             63
+
+
+
+ Quit Edit Change Update Page More Switch V/Isel
+
+</pre>
+      この表示でのコマンドは以下。頭文字がコマンドに対応。
+      <table class="styled-table"><tbody>
+	  <tr><td><b>q</b></td><td>Quit</td><td>Main Menu に戻る。</td></tr>
+	  <tr><td><b>e</b></td><td>Edit</td><td>使わない。</td></tr>
+	  <tr><td><b>c</b></td><td>Change</td><td>値の変更。Hv の場合は ON/OFF のトグル。Channel, V0set, I0set, V1set, I1set,Vmax, Rup, Rdwn, Trip の場合は<b>値を続けて入力してから Enter</b>。</td></tr>
+	  <tr><td><b>u</b></td><td>Update</td><td>画面の強制更新。</td></tr>
+	  <tr><td><b>p</b></td><td>Page</td><td>ページを送る。1ページには16チャンネルずつしか表示されない。</td></tr>
+	  <tr><td><b>m</b></td><td>More</td><td>下図のように表示する情報を入れ替える。</td></tr>
+      </tbody></table>
+
+      <pre>
+	                C.A.E.N.       SY403        V1.45
+ GROUP00      Hv_En is: On     V0-SEL     I0-SEL      Crate 01       Page 3
+
+ Channel     SVmax  Rup  Rdwn  Trip    Pon  Pdwn  Password   On/Off    Ch#
+ CHANNEL48    3000  100  100  000.1    Off  Kill  Required  Enabled     48
+ CHANNEL49    3000  100  100  000.1    Off  Kill  Required  Enabled     49
+ CHANNEL50    3000  100  100  000.1    Off  Kill  Required  Enabled     50
+ CHANNEL51    3000  100  100  000.1    Off  Kill  Required  Enabled     51
+ CHANNEL52    3000  100  100  000.1    Off  Kill  Required  Enabled     52
+ CHANNEL53    3000  100  100  000.1    Off  Kill  Required  Enabled     53
+ CHANNEL54    3000  100  100  000.1    Off  Kill  Required  Enabled     54
+ CHANNEL55    3000  100  100  000.1    Off  Kill  Required  Enabled     55
+ CHANNEL56    3000  100  100  000.1    Off  Kill  Required  Enabled     56
+ CHANNEL57    3000  100  100  000.1    Off  Kill  Required  Enabled     57
+ CHANNEL58    3000  100  100  000.1    Off  Kill  Required  Enabled     58
+ CHANNEL59    3000  100  100  000.1    Off  Kill  Required  Enabled     59
+ CHANNEL60    3000  100  100  000.1    Off  Kill  Required  Enabled     60
+ CHANNEL61    3000  100  100  000.1    Off  Kill  Required  Enabled     61
+ CHANNEL62    3000  100  100  000.1    Off  Kill  Required  Enabled     62
+ CHANNEL63    3000  100  100  000.1    Off  Kill  Required  Enabled     63
+
+
+
+ Quit Edit Change Update Page More Switch
+
+
+</pre>
+      <p>注）キーボード環境に依存がある。コマンド送信の Enter 入力時にカーソルが1つ下に移動する。</p>
+
+      <h3>N1470</h3>
+      <p>
+	4 Ch Reversible 8 kV/3 mA (8 W) NIM HV Power Supply Module (USB)
+	<a href="https://www.caen.it/products/n1470/">https://www.caen.it/products/n1470/</a>
+      </p>
+      <b>db-hyps</b> で実行。
+      <pre>$ caenhv3</pre>
+      下図のような画面が起動する。
+      <div class="image-container"><img src="fig/caenhv3-screen.png"></div>
+      矢印キー上下左右でカーソル移動。<br>
+      I0Set, V0Set を変更したいカーソル位置で <b>Enter</b> を入力、
+      値を数字で入力後、<b>Enter</b> 入力。<br>
+      HV の ON/OFF を変更したいカーソル位置で <b>Space</b> を入力。<br>
+      数値やステータスの反映に5秒程度かかるので、待つ。
+      <div class="image-container"><img src="fig/caenhv3-edit.png"></div>
+      操作終了後、 <b>q</b> で終了。<br>
+      <!-- 起動時、数値が全て <b>0</b> になっている場合は <b>q</b> で終了後再度実行。 -->
+
+      <p><a href="index.html" style="text-decoration: none; color: #007BFF;">Home</a></p>
+      <hr>
+      <footer>
+        <script type="text/javascript">
+          var day = new Date(document.lastModified);
+          var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          var y = day.getFullYear();
+          var m = day.getMonth() + 1;
+          var d = day.getDate();
+          var w = week[day.getDay()];
+          if (m < 10) m = "0" + m;
+          if (d < 10) d = "0" + d;
+          document.write("Last Update: " + y + "/" + m + "/" + d + " (" + w + ")");
+        </script>
+        <noscript>JavaScript is unavailable</noscript>
+      </footer>
+    </main>
+  </body>
+</html>

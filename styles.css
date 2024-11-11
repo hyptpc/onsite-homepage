@@ -1,5 +1,5 @@
 body {
-    font-family: 'Quicksand', 'Roboto', sans-serif;
+    font-family: /* 'Noto Sans JP', 'Quicksand', 'Roboto',  */sans-serif;
     margin: 0;
     padding: 0;
     background-color: #F8F9FA;
@@ -27,16 +27,25 @@ main {
 h3 {
     font-size: 1.2rem;
     color: #001F3F;
+    margin-top: 100px;
     margin-bottom: 10px;
     border-bottom: 2px solid #001F3F;
-    display: inline-block;
+    /* display: inline-block; */
+}
+
+h4 {
+    font-size: 1.0rem;
+    color: #001F3F;
+    margin-bottom: 10px;
+    /* border-bottom: 2px solid #001F3F; */
+    /* display: inline-block; */
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: disc; /* デフォルトは黒丸 */
+    padding-left: 20px; /* 左の余白 */
+    margin-bottom: 20px;
 }
-
 ul.example li {
     margin: 10px 0;
 }
@@ -67,4 +76,142 @@ footer a {
 
 footer a:hover {
     color: #0056b3;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #2e2e2e;
+    color: #ffffff;
+    /* background-color: #f4f4f4; */
+    /* color: #d63384; */
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+pre.light-mode {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+}
+
+pre {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    border: 1px solid #444444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+pre.dark-mode code {
+    color: #ffcc99;
+}
+
+
+.styled-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* background-color: #F5F8FC; /\* 全体の背景をさらに薄い紺色 *\/ */
+}
+
+.styled-table thead tr {
+    background-color: #DCE6F1; /* ヘッダーのさらに薄い紺色 */
+    color: #333; /* ヘッダーテキストをダークグレー */
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    transition: background-color 0.3s;
+}
+
+/* .styled-table tbody tr:nth-of-type(even) { */
+/*     background-color: #EAF0F8; /\* 偶数行の背景をさらに薄い紺色 *\/ */
+/* } */
+
+/* .styled-table tbody tr:nth-of-type(odd) { */
+/*     background-color: #F5F8FC; /\* 奇数行の背景を全体と同じ薄い紺色 *\/ */
+/* } */
+
+/* .styled-table tbody tr:hover { */
+/*     background-color: #DCE6F1; /\* ホバー時の背景をヘッダーと同じ色に *\/ */
+/* } */
+
+/* .styled-table tbody tr:last-of-type { */
+/*     border-bottom: 2px solid #B0C4DE; /\* 最後の行の境界線を薄い紺色に *\/ */
+/* } */
+
+
+/* 画像コンテナのスタイル */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+/* PNG画像のスタイル */
+.image-container img {
+    max-width: 100%; /* 画像をコンテナ内に収める */
+    height: auto; /* アスペクト比を維持 */
+    display: block;
+    border-radius: 10px; /* 角を丸くする */
+}
+
+.image-row {
+    display: flex; /* 横並びにする */
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    gap: 20px; /* 画像間のスペース */
+    flex-wrap: wrap; /* 小さい画面で折り返し */
+    margin: 20px 0;
+}
+
+/* 個々の画像カード */
+.image-card {
+    background-color: #FFFFFF; /* 背景を白に */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* 画像カードの最大幅 */
+    text-align: center; /* キャプションを中央揃え */
+}
+
+/* 画像スタイル */
+.image-card img {
+    max-width: 100%; /* 親コンテナにフィット */
+    height: auto; /* アスペクト比を維持 */
+    border-radius: 10px; /* 角を丸くする */
+}
+
+/* 画像キャプションのスタイル */
+.image-card .image-caption {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
 }
