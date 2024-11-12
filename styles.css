@@ -27,7 +27,7 @@ main {
 h3 {
     font-size: 1.2rem;
     color: #001F3F;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     margin-bottom: 10px;
     border-bottom: 2px solid #001F3F;
     /* display: inline-block; */
@@ -214,4 +214,28 @@ pre.dark-mode code {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #555;
+}
+
+.toc {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.toc ul {
+  list-style-type: none;
+  /* padding: 0; */
+}
+
+.toc li {
+  margin: 5px 0;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.toc a:hover {
+  text-decoration: underline;
 }

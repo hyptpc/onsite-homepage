@@ -16,23 +16,47 @@
       How to control CAENHV
     </header>
     <main>
+      <div class="toc">
+	<ul>
+	  <li><a href="#summary">Summary</a></li>
+	  <li><a href="#sy127">SY127 (caenhv0)</a></li>
+	  <li><a href="#sy403">SY403 (caenhv1, 2)</a></li>
+	  <li><a href="#n1470">N1470 (caenhv3)</a></li>
+	</ul>
+      </div>
+      <h3 id="summary">Summary</h3>
       <p>使用する CAENHV は4系統。</p>
       <table class="styled-table">
 	<thead>
 	  <tr><td>alias</td><td>module</td><td>asignment</td></tr>
 	</thead>
 	<tbody>
-	  <tr><td>caenhv0</td><td>SY527</td><td>Tagger</td></tr>
+	  <tr><td>caenhv0</td><td>SY127</td><td>Tagger</td></tr>
 	  <tr><td>caenhv1</td><td>SY403</td><td>TOF</td></tr>
 	  <tr><td>caenhv2</td><td>SY403</td><td>TOF</td></tr>
 	  <tr><td>caenhv3</td><td>N1470</td><td>T0, AC, VETO</td></tr>
 	</tbody>
       </table>
-      <p>操作は全て <b>db-hyps</b> で行う。</p>
-      <pre>$ ssh sks@db-hyps</pre>
+      <p>操作は全て <b>db-hyps</b> で行う。caenhv0 - caenhv3 というコマンド名で alias が設定してある。</p>
+      <pre>$ ssh sks@db-hyps
+$ caenhv0
+$ caenhv1
+$ caenhv2
+$ caenhv3
+</pre>
 
-      <h3>SY403/SY527</h3>
-     <!-- <h4>SY403</h4> -->
+      <h3 id="sy127">SY127</h3>
+      <p>
+	40 Channel High Voltage System
+	- Mod A333 4 Channel 4/3kV-2/3mA x4
+      </p>
+
+      <h3 id="sy403">SY403</h3>
+
+      <p>
+	64 Channel High Voltage System
+	- Mod A503 16 Channel -3kV x4
+      </p>
       <b>db-hyps</b> で実行。接続すると下のように表示される。
       <pre>$ caenhv1
 Trying 192.168.20.11...
@@ -131,9 +155,14 @@ Escape character is '^]'.</pre>
 
 
 </pre>
-      <p>注）キーボード環境に依存がある。コマンド送信の Enter 入力時にカーソルが1つ下に移動する。</p>
+      <h4>*** 注意 ***</h4>
+      <ul>
+	<li>キーボード環境に依存がある。</li>
+	<li>コマンド送信の Enter 入力時にカーソルが1つ下に移動する。</li>
+	<li>同時に複数のセッションにはうまく対応しない。</li>
+      </ul>
 
-      <h3>N1470</h3>
+      <h3 id="n1470">N1470</h3>
       <p>
 	4 Ch Reversible 8 kV/3 mA (8 W) NIM HV Power Supply Module (USB)
 	<a href="https://www.caen.it/products/n1470/">https://www.caen.it/products/n1470/</a>
@@ -141,13 +170,39 @@ Escape character is '^]'.</pre>
       <b>db-hyps</b> で実行。
       <pre>$ caenhv3</pre>
       下図のような画面が起動する。
-      <div class="image-container"><img src="fig/caenhv3-screen.png"></div>
+      <pre>Use ARROW keys to navigate, ENTER to edit, SPACE to toggle Power, 'q' to quit
+
+           I0Set       V0Set        IMon        VMon     Pw   Status
+00-000 | 2000.00 uA | 1800.0 V | 0263.85 uA | 1799.8 V | ON  |     |
+00-001 | 2000.00 uA | 1800.0 V | 0264.25 uA | 1799.2 V | ON  |     |
+00-002 | 2000.00 uA | 1800.0 V | 0263.35 uA | 1799.4 V | ON  |     |
+00-003 | 2000.00 uA | 1800.0 V | 0264.00 uA | 1800.4 V | ON  |     |
+01-000 | 2000.00 uA | 1800.0 V | 0255.00 uA | 1800.0 V | ON  |     |
+01-001 | 2000.00 uA | 1800.0 V | 0254.55 uA | 1800.2 V | ON  |     |
+01-002 | 2000.00 uA | 1600.0 V | 0229.20 uA | 1599.8 V | ON  |     |
+01-003 | 2000.00 uA | 1600.0 V | 0226.40 uA | 1599.8 V | ON  |     |
+
+</pre>
+      <!-- <div class="image-container"><img src="fig/caenhv3-screen.png"></div> -->
       矢印キー上下左右でカーソル移動。<br>
       I0Set, V0Set を変更したいカーソル位置で <b>Enter</b> を入力、
       値を数字で入力後、<b>Enter</b> 入力。<br>
       HV の ON/OFF を変更したいカーソル位置で <b>Space</b> を入力。<br>
       数値やステータスの反映に5秒程度かかるので、待つ。
-      <div class="image-container"><img src="fig/caenhv3-edit.png"></div>
+      <pre>Use ARROW keys to navigate, ENTER to edit, SPACE to toggle Power, 'q' to quit
+Enter new VSET:	1800
+           I0Set       V0Set        IMon        VMon     Pw   Status
+00-000 | 2000.00 uA | 1800.0 V | 0263.85 uA | 1799.8 V | ON  |     |
+00-001 | 2000.00 uA | 1800.0 V | 0264.25 uA | 1799.2 V | ON  |     |
+00-002 | 2000.00 uA | 1800.0 V | 0263.35 uA | 1799.4 V | ON  |     |
+00-003 | 2000.00 uA | 1800.0 V | 0264.00 uA | 1800.4 V | ON  |     |
+01-000 | 2000.00 uA | 1800.0 V | 0255.00 uA | 1800.0 V | ON  |     |
+01-001 | 2000.00 uA | 1800.0 V | 0254.55 uA | 1800.2 V | ON  |     |
+01-002 | 2000.00 uA | 1600.0 V | 0229.25 uA | 1599.8 V | ON  |     |
+01-003 | 2000.00 uA | 1600.0 V | 0226.40 uA | 1599.8 V | ON  |     |
+
+</pre>
+      <!-- <div class="image-container"><img src="fig/caenhv3-edit.png"></div> -->
       操作終了後、 <b>q</b> で終了。<br>
       <!-- 起動時、数値が全て <b>0</b> になっている場合は <b>q</b> で終了後再度実行。 -->
 
