@@ -21,12 +21,20 @@
   <body>
     <header>Webcam</header>
     <main>
-      <h3>webcam1</h3>
+      <h3>webcam5</h3>
       <p>MTM, on experimental area</p>
-      <a href="http://webcam1/">webcam1</a> (user: admin, pass: beamtime)
+      <a href="http://webcam5/">webcam5</a> (user: admin, pass: igarashi)
       <div class="image-container">
-	<img data-snapshot="fig/webcam1.png"
-	     src="fig/webcam1.png" width="960" height="640">
+	<!-- <video autoplay muted style="width: 100%; height: auto;"> -->
+	<!--   <source src="http://buyu.intra.j-parc.jp/stream.m3u8" type="application/x-mpegURL"> -->
+	<!-- </video> -->
+	<img id="cam" src="webcam/webcam5.jpg" width="640" height="360">
+	<script>
+	  setInterval(() => {
+	      const img = document.getElementById('cam');
+	      img.src = 'webcam/webcam5.jpg?ts=' + new Date().getTime();
+	  }, 2000);
+	</script>
       </div>
       <p><a href="index.html" style="text-decoration: none; color: #007BFF;">Home</a></p>
       <hr>
