@@ -25,11 +25,23 @@
       <p>Bird view on experimental area</p>
       <a href="http://webcam5/">webcam5</a> (user: admin, pass: igarashi)
       <div class="image-container">
-	<img id="cam" src="webcam/webcam5.jpg" width="640" height="360">
+	<img id="webcam5" src="webcam/webcam5.jpg" width="640" height="360">
 	<script>
 	  setInterval(() => {
-	      const img = document.getElementById('cam');
+	      const img = document.getElementById('webncam5');
 	      img.src = 'webcam/webcam5.jpg?ts=' + new Date().getTime();
+	  }, 2000);
+	</script>
+      </div>
+      <h3>webcam6</h3>
+      <p>Pump for magnet</p>
+      <a href="http://webcam6/">webcam6</a> (user: admin, pass: igarashi)
+      <div class="image-container">
+	<img id="webcam6" src="webcam/webcam6.jpg" width="640" height="360">
+	<script>
+	  setInterval(() => {
+	      const img = document.getElementById('webcam6');
+	      img.src = 'webcam/webcam6.jpg?ts=' + new Date().getTime();
 	  }, 2000);
 	</script>
       </div>
