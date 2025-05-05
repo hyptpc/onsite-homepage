@@ -239,3 +239,31 @@ pre.dark-mode code {
 .toc a:hover {
   text-decoration: underline;
 }
+
+.webcam-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.webcam-grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.webcam-grid-item img {
+  width: 640;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .webcam-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+}

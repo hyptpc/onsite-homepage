@@ -15,51 +15,41 @@
 	      img.src = `${src}?t=${new Date().getTime()}`;
 	  });
       }
-      setInterval(updateSnapshots, 10000);
+      window.addEventListener('DOMContentLoaded', () => {
+	  updateSnapshots();
+	  setInterval(updateSnapshots, 2000);
+      });
     </script>
   </head>
   <body>
     <header>Webcam</header>
     <main>
-      <h3>webcam5</h3>
-      <p>Bird view on experimental area</p>
-      <a href="http://webcam5/">webcam5</a> (user: admin, pass: igarashi)
-      <div class="image-container">
-	<img id="webcam5" src="webcam/webcam5.jpg" width="640" height="360">
-	<script>
-	  setInterval(() => {
-	      const img = document.getElementById('webcam5');
-	      img.src = 'webcam/webcam5.jpg?ts=' + new Date().getTime();
-	  }, 2000);
-	</script>
+      <div class="webcam-grid-container">
+	<section class="webcam-grid-item">
+	  <h3>webcam5</h3>
+	  <p>Bird view on experimental area</p>
+	  <a href="http://webcam5/">webcam5</a> (user: admin, pass: igarashi)
+	  <div class="image-container">
+            <img data-snapshot="webcam/webcam5.jpg" src="webcam/webcam5.jpg" alt="webcam5">
+	  </div>
+	</section>
+	<section class="webcam-grid-item">
+	  <h3>webcam6</h3>
+	  <p>Pump for magnet</p>
+	  <a href="http://webcam6/">webcam6</a> (user: admin, pass: igarashi)
+	  <div class="image-container">
+            <img data-snapshot="webcam/webcam6.jpg" src="webcam/webcam6.jpg" alt="webcam6">
+	  </div>
+	</section>
+      <section class="webcam-grid-item">
+	<h3>webcam7</h3>
+	<p>Area circuit tent</p>
+	<a href="http://webcam7/">webcam7</a> (user: admin, pass: igarashi)
+	<div class="image-container">
+          <img data-snapshot="webcam/webcam7.jpg" src="webcam/webcam7.jpg" alt="webcam7">
+	</div>
+      </section>
       </div>
-
-      <h3>webcam6</h3>
-      <p>Pump for magnet</p>
-      <a href="http://webcam6/">webcam6</a> (user: admin, pass: igarashi)
-      <div class="image-container">
-	<img id="webcam6" src="webcam/webcam6.jpg" width="640" height="360">
-	<script>
-	  setInterval(() => {
-	      const img = document.getElementById('webcam6');
-	      img.src = 'webcam/webcam6.jpg?ts=' + new Date().getTime();
-	  }, 2000);
-	</script>
-      </div>
-
-      <h3>webcam7</h3>
-      <p>Area circuit tent</p>
-      <a href="http://webcam7/">webcam7</a> (user: admin, pass: igarashi)
-      <div class="image-container">
-	<img id="webcam7" src="webcam/webcam7.jpg" width="640" height="360">
-	<script>
-	  setInterval(() => {
-	      const img = document.getElementById('webcam7');
-	      img.src = 'webcam/webcam7.jpg?ts=' + new Date().getTime();
-	  }, 2000);
-	</script>
-      </div>
-
       <p><a href="index.html" style="text-decoration: none; color: #007BFF;">Home</a></p>
       <hr>
       <footer>
