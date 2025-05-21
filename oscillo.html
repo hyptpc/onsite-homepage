@@ -1,0 +1,43 @@
+<!-- oscillo.html -->
+
+<html>
+  <head>
+    <title>Oscilloscope</title>
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:wght@400;700|Quicksand:300,400,500|Roboto:300,400,500&display=swap">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <header>
+      Oscilloscope
+    </header>
+    <main>
+      <div class="toc">
+	<ul>
+	  <li><a href="http://k18br-tds6.monitor.k18br:81" target="_blank">k18br-tds6</a> (spill monitor at counting room)</li>
+	</ul>
+      </div>
+
+      <p><a href="index.html" style="text-decoration: none; color: #007BFF;">Home</a></p>
+      <hr>
+      <footer>
+        <script type="text/javascript">
+          var day = new Date(document.lastModified);
+          var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          var y = day.getFullYear();
+          var m = day.getMonth() + 1;
+          var d = day.getDate();
+          var w = week[day.getDay()];
+          if (m < 10) m = "0" + m;
+          if (d < 10) d = "0" + d;
+          document.write("Last Update: " + y + "/" + m + "/" + d + " (" + w + ")");
+        </script>
+        <noscript>JavaScript is unavailable</noscript>
+      </footer>
+    </main>
+  </body>
+</html>
